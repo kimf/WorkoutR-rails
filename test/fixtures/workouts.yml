@@ -1,0 +1,50 @@
+# == Schema Information
+#
+# Table name: workouts
+#
+#  id                      :integer          not null, primary key
+#  planned_date            :date
+#  planned_sport_id        :integer
+#  planned_km              :float
+#  planned_minutes         :float
+#  planned_workout_type_id :integer
+#  description             :text
+#  actual_date             :date
+#  actual_sport_id         :integer
+#  actual_km               :float
+#  actual_minutes          :float
+#  actual_workout_type_id  :integer
+#  notes                   :text
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  planned_date: 2018-01-06
+  planned_sport: 
+  planned_km: 1.5
+  planned_minutes: 1.5
+  planned_type: 
+  description: MyText
+  actual_date: 2018-01-06
+  actual_sport: 
+  actual_km: 1.5
+  actual_minutes: 1.5
+  actual_type: 
+  notes: MyText
+
+two:
+  planned_date: 2018-01-06
+  planned_sport: 
+  planned_km: 1.5
+  planned_minutes: 1.5
+  planned_type: 
+  description: MyText
+  actual_date: 2018-01-06
+  actual_sport: 
+  actual_km: 1.5
+  actual_minutes: 1.5
+  actual_type: 
+  notes: MyText
