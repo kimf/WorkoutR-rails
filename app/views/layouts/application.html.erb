@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WorkoutRRails</title>
+    <title><%= content_for?(:title) ? yield(:title) : "Kims Träningsdagbok" %></title>
     <%= csrf_meta_tags %>
 
+    <link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.204/distr/fira_code.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+  <section id="root">
+      <header id="header">
+        <h1>Kims Träningsdagbok</h1>
+        <%= render 'sports_legend' %>
+      </header>
+      <div class="wrapper">
+        <%= yield %>
+      </div>
+    </section>
   </body>
 </html>

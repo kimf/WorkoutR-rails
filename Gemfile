@@ -54,6 +54,8 @@ group :development do
   gem 'bullet'
   gem 'active_record_doctor'
   gem 'annotate'
+  gem 'guard-livereload', '~> 2.5', require: false
+  gem 'rack-livereload', group: :development
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

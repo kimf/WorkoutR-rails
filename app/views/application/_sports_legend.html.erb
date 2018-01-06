@@ -1,0 +1,8 @@
+<ul class="legend">
+  <% sports.each do |sport| %>
+    <li style="color: <%= SPORT_COLORS[sport.name]%>">
+      <%= render 'svg_dot', color: SPORT_COLORS[sport.name] %>
+      <%= sport.name %>
+    </li>
+  <% end %>
+</ul>
