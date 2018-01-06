@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: races
+#
+#  id          :integer          not null, primary key
+#  sport_id    :integer
+#  goal_time   :float
+#  actual_time :float
+#  distance    :float
+#  date        :date
+#  name        :string
+#  notes       :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sport: one
+  goal_time: 1.5
+  actual_time: 1.5
+  distance: 1.5
+  date: 2018-01-06
+  name: MyString
+  notes: MyText
+
+two:
+  sport: two
+  goal_time: 1.5
+  actual_time: 1.5
+  distance: 1.5
+  date: 2018-01-06
+  name: MyString
+  notes: MyText

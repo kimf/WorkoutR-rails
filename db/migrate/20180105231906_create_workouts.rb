@@ -16,11 +16,5 @@ class CreateWorkouts < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-
-    add_foreign_key :workouts, :sports, column: :planned_sport_id, primary_key: :id
-    add_foreign_key :workouts, :sports, column: :actual_sport_id, primary_key: :id
-
-    add_foreign_key :workouts, :sports, column: :planned_workout_type_id, primary_key: :id
-    add_foreign_key :workouts, :sports, column: :actual_workout_type_id, primary_key: :id
   end
 end

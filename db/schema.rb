@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_01_05_231906) do
+ActiveRecord::Schema.define(version: 2018_01_05_233726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,19 @@ ActiveRecord::Schema.define(version: 2018_01_05_231906) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "races", force: :cascade do |t|
+    t.bigint "sport_id"
+    t.float "goal_time"
+    t.float "actual_time"
+    t.float "distance"
+    t.date "date"
+    t.string "name"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sport_id"], name: "index_races_on_sport_id"
+  end
+
   create_table "sports", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -79,8 +92,5 @@ ActiveRecord::Schema.define(version: 2018_01_05_231906) do
     t.index ["planned_workout_type_id"], name: "index_workouts_on_planned_workout_type_id"
   end
 
-  add_foreign_key "workouts", "sports", column: "actual_sport_id"
-  add_foreign_key "workouts", "sports", column: "actual_workout_type_id"
-  add_foreign_key "workouts", "sports", column: "planned_sport_id"
-  add_foreign_key "workouts", "sports", column: "planned_workout_type_id"
+  add_foreign_key "races", "sports"
 end

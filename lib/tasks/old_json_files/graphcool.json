@@ -18,6 +18,18 @@
     },
     {
       "plannedSport": "Running",
+      "plannedMinutes": 55,
+      "_typeName": "Workout",
+      "plannedInformation": "Hagenloppet 10k, Seedningslopp LL",
+      "plannedKm": 10,
+      "plannedDate": "2017-08-19T00:00:00.000Z",
+      "id": "cjc1npzfd1pra0150gumgmnzg",
+      "actualMinutes": 53.27,
+      "createdAt": "2018-01-05T08:26:55.000Z",
+      "plannedType": "Race"
+    },
+    {
+      "plannedSport": "Running",
       "plannedMinutes": 180,
       "updatedAt": "2018-01-05T08:30:45.000Z",
       "_typeName": "Workout",
@@ -977,7 +989,7 @@
       "plannedType": "Easy"
     },
     {
-      "plannedSport": "Indoor Cycling ",
+      "plannedSport": "Cycling ",
       "plannedMinutes": 10,
       "updatedAt": "2018-01-05T21:14:41.000Z",
       "_typeName": "Workout",
@@ -1505,7 +1517,7 @@
       "createdAt": "2018-01-03T22:47:29.000Z"
     },
     {
-      "name": "Cross Country Skiing",
+      "name": "XCSkiing",
       "updatedAt": "2018-01-03T22:47:43.000Z",
       "_typeName": "Sport",
       "id": "cjbznl9kc04wg01506fapnhem",
@@ -1540,7 +1552,7 @@
       "createdAt": "2018-01-05T10:10:03.000Z"
     },
     {
-      "name": "Indoor Cycling",
+      "name": "Cycling",
       "updatedAt": "2018-01-05T10:10:18.000Z",
       "_typeName": "Sport",
       "id": "cjc1rexsr37vo0150ps5ppnlp",

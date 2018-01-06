@@ -21,7 +21,7 @@
 
 class Workout < ApplicationRecord
   belongs_to :planned_sport, class_name: 'Sport'
-  belongs_to :actual_sport, class_name: 'Sport'
-  belongs_to :planned_workout_type, class_name: 'WorkoutType'
-  belongs_to :actual_workout_type, class_name: 'WorkoutType'
+  belongs_to :actual_sport, class_name: 'Sport', optional: true
+  belongs_to :planned_workout_type, class_name: 'WorkoutType', optional: true
+  belongs_to :actual_workout_type, class_name: 'WorkoutType', optional: true
 end
