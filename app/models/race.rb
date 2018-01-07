@@ -16,4 +16,10 @@
 
 class Race < ApplicationRecord
   belongs_to :sport
+
+  default_scope { order(date: :desc) }
+
+  def completed?
+    !actual_time.nil?
+  end
 end

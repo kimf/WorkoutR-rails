@@ -3,6 +3,7 @@ SPORT_COLORS = {
   "Swimming" => "#4E95EA",
   "Cycling" => "#929873",
   "XCSkiing" => "#96CAC5",
+  "Roller Skiing" => "#96CAC5",
   "Strength" => "#F04A5C",
   "Flexibility" => "#45C5AE"
 }.freeze
@@ -12,6 +13,7 @@ SPORT_ICONS = {
   "Swimming" =>"🏊‍",
   "Cycling" =>"🚴‍",
   "XCSkiing" =>"⛷️",
+  "Roller Skiing" =>"⛷️",
   "Strength" =>"🏋️‍",
   "Flexibility" =>"🤸"
 }.freeze
@@ -30,10 +32,5 @@ module ApplicationHelper
   def avg(arr)
     return 0 unless arr.size > 0
     (arr.reduce(:+) / arr.size)
-  end
-
-  def render_if(value, ending = nil)
-    return nil unless value
-    "#{value} #{ending}"
   end
 end

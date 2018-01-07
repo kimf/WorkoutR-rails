@@ -9,10 +9,10 @@ class MeasurementDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    weight: Field::Number.with_options(decimals: 2),
-    waist: Field::Number.with_options(decimals: 2),
-    hips: Field::Number.with_options(decimals: 2),
-    thigh: Field::Number.with_options(decimals: 2),
+    weight: Field::Number.with_options(decimals: 1, suffix: ' kg'),
+    waist: Field::Number.with_options(decimals: 1, suffix: ' cm'),
+    hips: Field::Number.with_options(decimals: 1, suffix: ' cm'),
+    thigh: Field::Number.with_options(decimals: 1, suffix: ' cm'),
     measured_at: Field::DateTime,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -25,9 +25,11 @@ class MeasurementDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
+    :measured_at,
     :weight,
     :waist,
     :hips,
+    :thigh
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -57,7 +59,7 @@ class MeasurementDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how measurements are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(measurement)
-  #   "Measurement ##{measurement.id}"
-  # end
+  def display_resource(measurement)
+    "Mätning ##{measurement.id} - #{measurement.measured_at.to_s(:day_and_month)}"
+  end
 end

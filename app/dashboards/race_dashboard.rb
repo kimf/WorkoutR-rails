@@ -26,8 +26,10 @@ class RaceDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :sport,
     :id,
+    :date,
+    :sport,
+    :name,
     :goal_time,
     :actual_time,
   ].freeze
@@ -63,7 +65,7 @@ class RaceDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how races are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(race)
-  #   "Race ##{race.id}"
-  # end
+  def display_resource(race)
+    "Race ##{race.id} - #{race.name}"
+  end
 end

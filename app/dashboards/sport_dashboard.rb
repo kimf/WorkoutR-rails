@@ -8,8 +8,6 @@ class SportDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    planned_workouts: Field::HasMany.with_options(class_name: "Workout"),
-    actual_workouts: Field::HasMany.with_options(class_name: "Workout"),
     races: Field::HasMany,
     id: Field::Number,
     name: Field::String,
@@ -23,18 +21,13 @@ class SportDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :planned_workouts,
-    :actual_workouts,
-    :races,
     :id,
+    :name,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :planned_workouts,
-    :actual_workouts,
-    :races,
     :id,
     :name,
     :created_at,
@@ -45,16 +38,13 @@ class SportDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :planned_workouts,
-    :actual_workouts,
-    :races,
     :name,
   ].freeze
 
   # Overwrite this method to customize how sports are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(sport)
-  #   "Sport ##{sport.id}"
-  # end
+  def display_resource(sport)
+    sport.name
+  end
 end

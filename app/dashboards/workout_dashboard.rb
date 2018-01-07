@@ -35,31 +35,33 @@ class WorkoutDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :id,
+    :planned_date,
     :planned_sport,
-    :actual_sport,
     :planned_workout_type,
-    :actual_workout_type,
+    :planned_minutes,
+    :planned_km,
+    :actual_sport,
+    :actual_date,
+    :actual_minutes,
+    :description
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :planned_sport,
-    :actual_sport,
-    :planned_workout_type,
-    :actual_workout_type,
     :id,
     :planned_date,
-    :planned_sport_id,
-    :planned_km,
+    :planned_sport,
+    :planned_workout_type,
     :planned_minutes,
-    :planned_workout_type_id,
+    :planned_km,
     :description,
     :actual_date,
-    :actual_sport_id,
-    :actual_km,
+    :actual_sport,
+    :actual_workout_type,
     :actual_minutes,
-    :actual_workout_type_id,
+    :actual_km,
     :notes,
     :created_at,
     :updated_at,
@@ -69,21 +71,18 @@ class WorkoutDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :planned_sport,
-    :actual_sport,
-    :planned_workout_type,
-    :actual_workout_type,
+    :id,
     :planned_date,
-    :planned_sport_id,
-    :planned_km,
+    :planned_sport,
+    :planned_workout_type,
     :planned_minutes,
-    :planned_workout_type_id,
+    :planned_km,
     :description,
     :actual_date,
-    :actual_sport_id,
-    :actual_km,
+    :actual_sport,
+    :actual_workout_type,
     :actual_minutes,
-    :actual_workout_type_id,
+    :actual_km,
     :notes,
   ].freeze
 
