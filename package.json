@@ -1,5 +1,12 @@
 {
-  "name": "WorkoutRRails",
+  "name": "workoutr",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "^3.2.0",
+    "coffeescript": "1.12.7",
+    "stimulus": "^0.9.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.9.7"
+  }
 }

@@ -1,0 +1,8 @@
+<tr style="color: <%= color %>">
+  <td><%= title %></td>
+  <td>
+    <strong><%= @last[key] %> <%= unit%></strong>
+  </td>
+  <td><%= @last[key] - @first[key] %></td>
+  <td><%= number_to_percentage((@last[key] - @first[key]) / @last[key] * 100) %></td>
+</tr>

@@ -1,7 +1,9 @@
 <ul class="legend">
   <% sports.each do |sport| %>
     <li style="color: <%= SPORT_COLORS[sport.name]%>">
-      <%= render 'svg_dot', color: SPORT_COLORS[sport.name] %>
+      <svg height="10" width="10" style="margin-right: 10px">
+        <circle cx="5" cy="5" r="5" fill="<%=SPORT_COLORS[sport.name]%>" />
+      </svg>
       <%= sport.name %>
     </li>
   <% end %>

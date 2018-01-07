@@ -1,0 +1,45 @@
+<header>
+  <strong>PASS PER VECKA</strong>
+  <small class="muted" style="float: right">
+    <%= number_with_precision(
+      avg(@consistency.map{|w| w[1]}),
+      precision: 1,
+      strip_insignificant_zeros: true
+     ) %> pass i snitt
+  </small>
+</header>
+<%#= column_chart @consistency, max: 7, height: 80, colors: ["#55DBCB"], download: true %>
+<div class="consistency">
+  <% @consistency.to_a.reverse.each do |week|%>
+    <div class="week">
+      <% week[1].times do |wo| %>
+        <span class="item"></span>
+      <% end %>
+      <span class="week_num"><%= week[0] %></span>
+    </div>
+  <% end %>
+</div>
+<hr />
+
+<header>
+  <strong>KM PER MÅNAD</strong>
+  <small class="muted" style="float: right">
+    <%= number_with_precision(
+      avg(@consistency_distance.map{|w| w[1]}),
+      precision: 1,
+      strip_insignificant_zeros: true
+     ) %> km i snitt
+  </small>
+</header>
+<div class="consistency" style="height: <%= @consistency_distance.to_a.map{|cd| cd[1]}.max.to_i + 20 %>px;">
+  <% @consistency_distance.to_a.reverse.each do |week|%>
+    <div class="week">
+      <span class="item month" style="height: <%= week[1]%>px">
+        <% if week[1] > 0 %>
+          <small><%= week[1].round %></small>
+        <% end %>
+      </span>
+      <span class="week_num"><%= week[0] %></span>
+    </div>
+  <% end %>
+</div>

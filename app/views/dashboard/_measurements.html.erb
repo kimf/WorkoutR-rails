@@ -1,0 +1,18 @@
+<%- @last = measurements.last %>
+<%- @first = measurements.first %>
+
+<header>
+  <strong>MIN VIKT</strong>
+  <small class="muted" style="float: right;">Senaste mätning: <%= @last.measured_at.to_s(:day_and_month) %></small>
+</header>
+<%= line_chart(
+  measurements.pluck(:measured_at, :weight), min: 70, max: 100, colors: ["#8884d8"], label: "Vikt", height: "160px"
+) %>
+<table style="margin-top: 10px; background: #fefefe; padding: 10px">
+  <tbody>
+    <%= render 'measurement_item', key: "weight", title: "Vikt", unit: "kg", color: "#8884d8" %>
+    <%= render 'measurement_item', key: "waist", title: "Mage", unit: "cm", color: "#82ca9d" %>
+    <%= render 'measurement_item', key: "hips", title: "Höft", unit: "cm", color: "#29858f" %>
+    <%= render 'measurement_item', key: "thigh", title: "Lår", unit: "cm", color: "#4a90e2" %>
+  </tbody>
+</table>

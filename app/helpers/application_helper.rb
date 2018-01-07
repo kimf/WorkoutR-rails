@@ -26,4 +26,9 @@ module ApplicationHelper
       "<span class='up'>&#8673;</span> <span class='muted'>#{prev_rank-rank}</span>"
     end
   end
+
+  def avg(arr)
+    return 0 unless arr.size > 0
+    (arr.reduce(:+) / arr.size)
+  end
 end

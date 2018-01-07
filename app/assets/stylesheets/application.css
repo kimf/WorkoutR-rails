@@ -102,7 +102,7 @@ hr {
 
 .main {
   padding: 20px;
-  width: 80%;
+  width: 60%;
   float: left;
   background: #fff;
   box-shadow: 0 0 10px #ccc;
@@ -110,7 +110,7 @@ hr {
 
 .sidebar {
   float: right;
-  width: 20%;
+  width: 40%;
   padding: 20px 0 20px 20px;
   height: calc(100% - 80px);
 }
@@ -282,4 +282,70 @@ li.workoutTemplateItem {
 .workout:hover {
   border: 1px solid #000 !important;
   cursor: pointer;
+}
+
+.workout-list,
+.sidebar.toggled .stats {
+  display: none;
+}
+
+.sidebar.toggled .workout-list {
+  display: block;
+}
+
+.muted {
+  color: #999;
+}
+
+.consistency {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  height: 100px;
+  overflow: scroll;
+  direction: rtl;
+}
+
+.consistency .week {
+  direction: ltr;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0 1px;
+}
+
+.consistency .item {
+  flex: 1;
+  display: flex;
+  background: #87d37c;
+  height: 10px;
+  width: 100%;
+  margin-top: 2px;
+  font-size: 0.8em;
+}
+
+.consistency .item.month {
+  background: #4ecdc4;
+  color: #1e824c;
+}
+
+.consistency .item small {
+  text-align: center;
+  flex: 1;
+  margin-top: 5px;
+}
+
+.consistency .week_num {
+  flex: 1;
+  font-size: 0.6em;
+  color: #777;
+  width: 100%;
+  height: 20px;
+  display: block;
+  padding: 5px 0;
+  text-transform: uppercase;
 }

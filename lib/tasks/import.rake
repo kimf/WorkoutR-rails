@@ -56,4 +56,37 @@ namespace :import do
       end
     end
   end
+
+  desc "Import Workouts from google_sheets json"
+  task workouts_again: :environment do
+    Dir["lib/tasks/old_json_files/2018.json"].each do |file|
+      weeks = JSON.parse(File.read(file))
+
+      weeks.each do |week|
+        date_parts = week["v"].split("-").map(&:to_i)
+        week["days"].each do |day|
+          planned_date = Date.commercial(date_parts[0], date_parts[1], day["day"].to_i)
+
+          workouts = day["data"].split("+")
+          workouts.each do |wo|
+            parts = wo.split('|')
+            sport = parts[0]
+            min = parts[1].to_f
+            km = parts[2].to_f
+            type = parts[3]
+            info = parts[4]
+
+            Workout.create!(
+              planned_date: planned_date,
+              planned_sport: Sport.where(name: sport.to_s.squish).first,
+              planned_km: km,
+              planned_minutes: min,
+              planned_workout_type: WorkoutType.where(name: type.to_s.squish).first || nil,
+              description: info,
+            )
+          end
+        end
+      end
+    end
+  end
 end

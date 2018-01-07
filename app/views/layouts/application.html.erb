@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="https://cdn.rawgit.com/tonsky/FiraCode/1.204/distr/fira_code.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
   </head>
 
   <body>
   <section id="root">
       <header id="header">
-        <h1>Kims Träningsdagbok</h1>
+        <h1>TRÄNINGSDAGBOK <small style="font-family: Verdana; font-size: 0.5em; color: #c00">BETA</small></h1>
         <%= render 'sports_legend' %>
       </header>
       <div class="wrapper">
