@@ -31,4 +31,9 @@ module ApplicationHelper
     return 0 unless arr.size > 0
     (arr.reduce(:+) / arr.size)
   end
+
+  def render_if(value, ending = nil)
+    return nil unless value
+    "#{value} #{ending}"
+  end
 end

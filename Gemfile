@@ -41,6 +41,7 @@ gem 'administrate'
 gem 'chartkick'
 gem 'rails-i18n'
 gem 'groupdate'
+gem 'simple_calendar'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

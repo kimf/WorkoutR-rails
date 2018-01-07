@@ -228,6 +228,8 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
     shellany (0.0.1)
+    simple_calendar (2.2.7)
+      rails (>= 3.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -290,6 +292,7 @@ DEPENDENCIES
   rails-i18n
   sass-rails (~> 5.0)
   selenium-webdriver
+  simple_calendar
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

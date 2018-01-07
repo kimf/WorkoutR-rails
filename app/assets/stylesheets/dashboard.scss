@@ -1,3 +1,88 @@
-// Place all the styles related to the dashboard controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.calender-header-week {
+  display: flex;
+}
+
+.calendar-header-day {
+  flex: 1;
+  text-align: left;
+  font-size: 0.8em;
+  padding: 0 0 10px 10px;
+  border-right: 1px solid #eee;
+  border-left: 1px solid transparent;
+}
+
+.calendar-wrapper {
+  height: calc(100% - 40px);
+  float: left;
+  width: 100%;
+  overflow: scroll;
+  padding-top: 20px;
+}
+
+.calendar-header {
+  border-bottom: 2px dashed #eee;
+  z-index: 1000;
+  position: relative;
+}
+.week span {
+  margin: 0 5px;
+  text-align: center;
+}
+
+.week-row {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.week-row li.day {
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  padding: 5px;
+}
+
+.week-row li.day:last-child {
+  border-right: 1px solid #ccc;
+}
+
+.week-row li.day.past {
+  opacity: 0.65;
+}
+
+.week-row li.day.today {
+  background: #feb;
+}
+
+.week-row li.day .workout {
+  float: left;
+  width: 100%;
+  min-height: 60px;
+  margin-bottom: 8px;
+  padding: 6px;
+  font-size: 0.7em;
+  position: relative;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.current-week {
+  box-shadow: inset 7px 0 4px -7px red;
+}
+
+.month-name {
+  margin-bottom: 20px;
+}
+
+.week-row-day {
+  flex: 1;
+  min-height: 200px;
+  overflow: hidden;
+}
+
+.week-row-day.summaries,
+.calendar-header-day.summaries {
+  background: "#eee";
+  flex: 1.75;
+}

@@ -32,6 +32,7 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   margin: 0;
+  overflow: hidden;
 }
 a {
   border-bottom: 1px solid #29858f;
@@ -102,7 +103,7 @@ hr {
 
 .main {
   padding: 20px;
-  width: 60%;
+  width: 70%;
   float: left;
   background: #fff;
   box-shadow: 0 0 10px #ccc;
@@ -110,7 +111,7 @@ hr {
 
 .sidebar {
   float: right;
-  width: 40%;
+  width: 30%;
   padding: 20px 0 20px 20px;
   height: calc(100% - 80px);
 }
@@ -125,57 +126,6 @@ hr {
   margin-right: 20px;
   font-size: 0.7em;
   color: #999;
-}
-
-.calendar-header {
-  padding-bottom: 20px;
-  border-bottom: 2px dashed #eee;
-  box-shadow: 0 20px 0 rgba(255, 255, 255, 0.75);
-  z-index: 1000;
-  position: relative;
-}
-.week span {
-  margin: 0 5px;
-  text-align: center;
-}
-
-.week-row li.day {
-  border-top: 1px solid #ccc;
-  border-left: 1px solid #ccc;
-  padding: 5px;
-}
-
-.week-row li.day:last-child {
-  border-right: 1px solid #ccc;
-}
-
-.week-row li.day.past {
-  opacity: 0.65;
-}
-
-.week-row li.day.today {
-  background: #feb;
-}
-
-.week-row li.day .workout {
-  float: left;
-  width: 100%;
-  min-height: 60px;
-  margin-bottom: 8px;
-  padding: 6px;
-  font-size: 0.7em;
-  position: relative;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.current-week {
-  box-shadow: inset 7px 0 4px -7px red;
-}
-
-.month-name {
-  margin-bottom: 20px;
 }
 
 .sidebar header {
