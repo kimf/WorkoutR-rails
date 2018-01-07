@@ -25,7 +25,7 @@ class Workout < ApplicationRecord
   belongs_to :planned_workout_type, class_name: 'WorkoutType', optional: true
   belongs_to :actual_workout_type, class_name: 'WorkoutType', optional: true
 
-  has_many_attached :training_files
+  has_one_attached :training_file
 
   attr_accessor :is_race
 

@@ -29,6 +29,7 @@
   </h4>
   <p><%= @workout.description %></p>
 
+
   <% if @workout.completed? %>
     <hr />
     <h4>
@@ -59,12 +60,30 @@
 </div>
 
 <div class="sidebar" data-controller="sidebar" data-sidebar-toggled="false">
+  <% if @workout.training_file.attached? %>
+    <%= link_to @workout.training_file.attachment.filename.to_s, url_for(@workout.training_file) %>
+  <% end %>
   <div class="form">
-    <strong>LADDA UPP TRÄNINGSFILER</strong>
+    <strong>LADDA UPP TRÄNINGSFIL</strong>
     <hr />
     <%= form_with model: @workout, local: true do |form| %>
       <label>
-        <%= form.file_field :training_files, multiple: true %>
+        Datum:
+        <%= form.text_field :actual_date, value: @workout.planned_date %>
+      </label>
+      <br /><br />
+      <label>
+        Sport:
+        <%= form.select(:actual_sport_id, sports.collect {|p| [ p.name, p.id ] }, selected: @workout.planned_sport.id) %>
+      </label>
+      <br /><br />
+      <label>
+        Pass-typ:
+        <%= form.select(:actual_workout_type_id, workout_types.collect {|p| [ p.name, p.id ] }, selected: @workout.planned_workout_type&.id) %>
+      </label>
+      <br /><br />
+      <label>
+        <%= form.file_field :training_file %>
       </label>
       <br /><br />
       <label>

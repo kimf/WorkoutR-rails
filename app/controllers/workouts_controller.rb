@@ -1,3 +1,5 @@
+require 'garmin_tcx'
+
 class WorkoutsController < ApplicationController
 
   def show
@@ -6,8 +8,17 @@ class WorkoutsController < ApplicationController
 
   def update
     @workout = Workout.find(params[:id])
-    @workout.training_files.attach(workout_params[:training_files])
-    @workout.update_attribute(:notes, workout_params[:notes])
+    @workout.assign_attributes(workout_params)
+
+    xml_contents = File.read(workout_params[:training_file].path)
+    tcx = GarminTcx.new(xml_contents)
+
+    @workout.actual_minutes = tcx.total_time / 60
+    @workout.actual_km = tcx.total_distance / 1000
+
+    @workout.save
+    @workout.training_file.attach(workout_params[:training_file])
+
     flash[:notice] = 'SPARADE OCH SÅDÄR'
     redirect_to :workout
   end
@@ -15,6 +26,12 @@ class WorkoutsController < ApplicationController
   private
 
   def workout_params
-    params.require(:workout).permit(:notes, :training_files)
+    params.require(:workout).permit(
+      :notes,
+      :training_file,
+      :actual_date,
+      :actual_sport_id,
+      :actual_workout_type_id
+    )
   end
 end

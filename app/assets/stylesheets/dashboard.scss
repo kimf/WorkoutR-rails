@@ -80,11 +80,11 @@
   font-weight: bold;
 }
 
-.week-row li.day.done .workout:not(.race) {
+.week-row li.day .workout.done:not(.race) {
   background: #80c159;
 }
 
-.week-row li.day.past:not(.done) .workout:not(.race) {
+.week-row li.day.past .workout:not(.done):not(.race) {
   background: #eb644a;
 }
 
