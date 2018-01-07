@@ -32,7 +32,6 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   margin: 0;
-  overflow: hidden;
 }
 a {
   border-bottom: 1px solid #29858f;
@@ -86,8 +85,10 @@ hr {
 
 .wrapper {
   height: 100%;
-  margin: 20px auto;
   padding: 20px;
+  margin: 0 auto;
+  max-width: 1800px;
+  min-width: 968px;
 }
 
 #header {
@@ -98,7 +99,7 @@ hr {
 
 .main,
 .sidebar {
-  height: calc(100% - 80px);
+  height: 100%;
 }
 
 .main {
@@ -112,8 +113,7 @@ hr {
 .sidebar {
   float: right;
   width: 30%;
-  padding: 20px 0 20px 20px;
-  height: calc(100% - 80px);
+  padding: 40px 0 20px 20px;
 }
 
 .legend {
