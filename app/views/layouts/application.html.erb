@@ -12,6 +12,9 @@
 
   <body>
   <section id="root">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
       <div class="wrapper">
         <%= yield %>
       </div>

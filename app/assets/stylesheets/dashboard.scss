@@ -40,6 +40,7 @@
   border-top: 1px solid #ccc;
   border-left: 1px solid #ccc;
   padding: 5px;
+  position: relative;
 }
 
 .week-row li.day:last-child {
@@ -60,13 +61,18 @@
   min-height: 60px;
   margin-bottom: 8px;
   padding: 6px;
-  font-size: 0.7em;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 11px;
+  font-family: "Arial Narrow", Arial, sans-serif;
   border: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   background: #ccc;
+  color: #444;
+}
+
+.workout .meta {
+  font-size: 11px;
+  font-weight: 100;
 }
 
 .week-row li.day .workout.race {
@@ -113,4 +119,21 @@
 .workout:hover {
   border: 1px solid #000 !important;
   cursor: pointer;
+}
+
+.week-row li.day .add {
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.week-row li.day:hover .add {
+  display: block;
+}
+
+.week-row li.day .add:hover {
+  opacity: 1;
 }

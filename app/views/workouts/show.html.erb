@@ -1,0 +1,78 @@
+<div class="main">
+  <h3>
+    <%= @workout.date.strftime('%e %B %Y') %>
+    <%= SPORT_ICONS[@workout.sport.name] %>
+  </h3>
+  <h4>
+    PLAN:
+    <%= t(@workout.planned_sport.name) %>
+    <% if @workout.planned_workout_type %>
+      -
+      <%= t(@workout.planned_workout_type.name) %>
+    <% end %>
+    <% if @workout.planned_minutes > 0 %>
+      -
+      <%= number_with_precision(
+        @workout.planned_minutes,
+        precision: 1,
+        strip_insignificant_zeros: true
+      ) %> min
+    <% end %>
+    <% if @workout.planned_km > 0 %>
+      -
+      <%= number_with_precision(
+        @workout.planned_km,
+        precision: 1,
+        strip_insignificant_zeros: true
+      ) %> km
+    <% end %>
+  </h4>
+  <p><%= @workout.description %></p>
+
+  <% if @workout.completed? %>
+    <hr />
+    <h4>
+      VERKLIGHET:
+      <%= t(@workout.actual_sport.name) %>
+      <% if @workout.actual_workout_type %>
+        -
+        <%= t(@workout.actual_workout_type.name) %>
+      <% end %>
+      <% if @workout.actual_minutes > 0 %>
+        -
+        <%= number_with_precision(
+          @workout.actual_minutes,
+          precision: 1,
+          strip_insignificant_zeros: true
+        ) %> min
+      <% end %>
+      <% if @workout.actual_km > 0 %>
+        -
+        <%= number_with_precision(
+          @workout.actual_km,
+          precision: 1,
+          strip_insignificant_zeros: true
+        ) %> km
+      <% end %>
+    </h4>
+  <% end %>
+</div>
+
+<div class="sidebar" data-controller="sidebar" data-sidebar-toggled="false">
+  <div class="form">
+    <strong>LADDA UPP TRÄNINGSFILER</strong>
+    <hr />
+    <%= form_with model: @workout, local: true do |form| %>
+      <label>
+        <%= form.file_field :training_files, multiple: true %>
+      </label>
+      <br /><br />
+      <label>
+        Noteringar:
+        <%= form.text_area :notes %><br><br>
+      </label>
+
+      <%= form.submit "SPARA TRÄNINGSPASS" %>
+    <% end %>
+  </div>
+</div>

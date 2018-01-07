@@ -1,5 +1,5 @@
 require 'json'
-namespace :import do
+namespace :old_data_import do
   desc "Import Measurements from json"
   task measurements: :environment do
     Dir["lib/tasks/old_json_files/*.json"].each do |file|
