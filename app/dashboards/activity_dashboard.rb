@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class WorkoutDashboard < Administrate::BaseDashboard
+class ActivityDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,7 +10,7 @@ class WorkoutDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     sport: Field::BelongsTo.with_options(class_name: "Sport"),
     workout_type: Field::BelongsTo.with_options(class_name: "WorkoutType"),
-    activity: Field::HasOne.with_options(class_name: "Activity"),
+    workout: Field::BelongsTo.with_options(class_name: "Activity"),
     id: Field::Number,
     date: Field::DateTime,
     sport_id: Field::Number,
@@ -34,7 +34,7 @@ class WorkoutDashboard < Administrate::BaseDashboard
     :minutes,
     :km,
     :description,
-    :activity
+    :workout
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -49,7 +49,7 @@ class WorkoutDashboard < Administrate::BaseDashboard
     :description,
     :created_at,
     :updated_at,
-    :activity
+    :workout
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -63,7 +63,7 @@ class WorkoutDashboard < Administrate::BaseDashboard
     :minutes,
     :km,
     :description,
-    :activity
+    :workout
   ].freeze
 
   # Overwrite this method to customize how workouts are displayed

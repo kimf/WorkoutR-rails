@@ -12,7 +12,6 @@
 #  description     :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  race_id         :integer
 #
 
 class Activity < ApplicationRecord

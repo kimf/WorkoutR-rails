@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :measurements
-    resources :races
     resources :sports
     resources :workouts
     resources :workout_types
+    resources :activities
 
-    root to: "measurements#index"
+    root to: "workouts#index"
   end
 
   resources :workouts, only: [:show]
