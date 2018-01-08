@@ -29,6 +29,10 @@ class Workout < ApplicationRecord
 
   attr_accessor :is_race
 
+  scope :completed, -> { where.not actual_date: nil }
+  scope :failed, -> { where actual_date: nil }
+
+
   def completed?
     !actual_date.nil?
   end

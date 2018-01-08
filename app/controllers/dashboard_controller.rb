@@ -6,7 +6,8 @@ class DashboardController < ApplicationController
     date_range = Date.parse('2017-04-27')..today
 
     @measurements = Measurement.all.to_a
-    @consistency = Workout.group_by_week(:actual_date, format: '%V', range: date_range).count
+    @consistency = Workout.completed.group_by_week(:actual_date, format: '%V', range: date_range).count
+
     @consistency_distance = Workout.group_by_month(:actual_date, format: '%b', range: date_range).sum(:planned_km)
 
     last_date = today.end_of_month + 2.months
