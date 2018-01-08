@@ -7,8 +7,8 @@
 module Admin
   class ApplicationController < Administrate::ApplicationController
     http_basic_authenticate_with(
-      name: ENV.fetch("ADMIN_NAME"),
-      password: ENV.fetch("ADMIN_PASSWORD")
+      name: Rails.application.credentials.admin.user,
+      password: Rails.application.credentials.admin.password
     )
 
     # Override this value to specify the number of elements to display at a time
