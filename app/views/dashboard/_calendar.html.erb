@@ -1,6 +1,6 @@
 <%= render 'calendar_header' %>
 <div class="calendar-wrapper">
-  <%= week_calendar number_of_weeks: @num_weeks, start_date: @start, attribute: :planned_date, events: @events do |date, workouts| %>
+  <%= week_calendar number_of_weeks: @num_weeks, start_date: @start, attribute: :date, events: @events do |date, workouts| %>
     <small><%= date.strftime('%d %b') %></small>
     <button class="add">+</button>
 
@@ -8,28 +8,28 @@
       <a
         href="/workouts/<%= workout.id %>"
         draggable="true"
-        class="workout <%= workout.is_race ? 'race' : '' %> <%=workout.planned_sport.name%> <%= workout.completed? ? 'done' : '' %>"
+        class="workout <%= workout.is_race? ? 'race' : '' %> <%=workout.sport.name%> <%= workout.activity.nil? ? '' : 'done' %>"
       >
         <header>
-          <div class="sport-icon" style="background: <%= SPORT_COLORS[workout.planned_sport.name]%>">
-            <%= SPORT_ICONS[workout.planned_sport.name] %>
+          <div class="sport-icon" style="background: <%= SPORT_COLORS[workout.sport.name]%>">
+            <%= SPORT_ICONS[workout.sport.name] %>
           </div>
-          <% if workout.planned_workout_type %>
-            <%= t(workout.planned_workout_type.name) %>
+          <% if workout.workout_type %>
+            <%= t(workout.workout_type.name) %>
           <% end %>
 
-          <% if workout.planned_minutes > 0 %>
+          <% if workout.minutes > 0 %>
             <%= number_with_precision(
-              workout.planned_minutes,
+              workout.minutes,
               precision: 1,
               strip_insignificant_zeros: true
             ) %> min
           <% end %>
         </header>
         <small class="meta">
-          <% if workout.planned_km > 0 %>
+          <% if workout.km > 0 %>
             <%= number_with_precision(
-              workout.planned_km,
+              workout.km,
               precision: 1,
               strip_insignificant_zeros: true
             ) %> km

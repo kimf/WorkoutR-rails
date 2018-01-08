@@ -5,23 +5,23 @@
   </h3>
   <h4>
     PLAN:
-    <%= t(@workout.planned_sport.name) %>
-    <% if @workout.planned_workout_type %>
+    <%= t(@workout.sport.name) %>
+    <% if @workout.workout_type %>
       -
-      <%= t(@workout.planned_workout_type.name) %>
+      <%= t(@workout.workout_type.name) %>
     <% end %>
-    <% if @workout.planned_minutes > 0 %>
+    <% if @workout.minutes > 0 %>
       -
       <%= number_with_precision(
-        @workout.planned_minutes,
+        @workout.minutes,
         precision: 1,
         strip_insignificant_zeros: true
       ) %> min
     <% end %>
-    <% if @workout.planned_km > 0 %>
+    <% if @workout.km > 0 %>
       -
       <%= number_with_precision(
-        @workout.planned_km,
+        @workout.km,
         precision: 1,
         strip_insignificant_zeros: true
       ) %> km
@@ -30,56 +30,57 @@
   <p><%= @workout.description %></p>
 
 
-  <% if @workout.completed? %>
+  <% if @activity.persisted? %>
     <hr />
     <h4>
       VERKLIGHET:
-      <%= t(@workout.actual_sport.name) %>
-      <% if @workout.actual_workout_type %>
+      <%= t(@activity.sport.name) %>
+      <% if @activity.workout_type %>
         -
-        <%= t(@workout.actual_workout_type.name) %>
+        <%= t(@activity.workout_type.name) %>
       <% end %>
-      <% if @workout.actual_minutes > 0 %>
+      <% if @activity.minutes > 0 %>
         -
         <%= number_with_precision(
-          @workout.actual_minutes,
+          @activity.minutes,
           precision: 1,
           strip_insignificant_zeros: true
         ) %> min
       <% end %>
-      <% if @workout.actual_km > 0 %>
+      <% if @activity.km > 0 %>
         -
         <%= number_with_precision(
-          @workout.actual_km,
+          @activity.km,
           precision: 1,
           strip_insignificant_zeros: true
         ) %> km
       <% end %>
     </h4>
+    <% if @activity.training_file.attached? %>
+      <%= link_to @activity.training_file.attachment.filename.to_s, url_for(@activity.training_file) %>
+    <% end %>
   <% end %>
 </div>
 
 <div class="sidebar" data-controller="sidebar" data-sidebar-toggled="false">
-  <% if @workout.training_file.attached? %>
-    <%= link_to @workout.training_file.attachment.filename.to_s, url_for(@workout.training_file) %>
-  <% end %>
   <div class="form">
     <strong>LADDA UPP TRÄNINGSFIL</strong>
     <hr />
-    <%= form_with model: @workout, local: true do |form| %>
+    <%= form_with model: @activity, local: true do |form| %>
+      <%= form.hidden_field :workout_id %>
       <label>
         Datum:
-        <%= form.text_field :actual_date, value: @workout.planned_date %>
+        <%= form.text_field :date %>
       </label>
       <br /><br />
       <label>
         Sport:
-        <%= form.select(:actual_sport_id, sports.collect {|p| [ p.name, p.id ] }, selected: @workout.planned_sport.id) %>
+        <%= form.select(:sport_id, sports.collect {|p| [ p.name, p.id ] } ) %>
       </label>
       <br /><br />
       <label>
         Pass-typ:
-        <%= form.select(:actual_workout_type_id, workout_types.collect {|p| [ p.name, p.id ] }, selected: @workout.planned_workout_type&.id) %>
+        <%= form.select(:workout_type_id, workout_types.collect {|p| [ p.name, p.id ] } ) %>
       </label>
       <br /><br />
       <label>
@@ -88,7 +89,7 @@
       <br /><br />
       <label>
         Noteringar:
-        <%= form.text_area :notes %><br><br>
+        <%= form.text_area :description %><br><br>
       </label>
 
       <%= form.submit "SPARA TRÄNINGSPASS" %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_01_05_233726) do
+ActiveRecord::Schema.define(version: 2018_01_08_120735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,23 @@ ActiveRecord::Schema.define(version: 2018_01_05_233726) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "activities", force: :cascade do |t|
+    t.date "date"
+    t.bigint "workout_id"
+    t.bigint "sport_id"
+    t.float "km"
+    t.float "minutes"
+    t.bigint "workout_type_id"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "race_id"
+    t.index ["race_id"], name: "index_activities_on_race_id"
+    t.index ["sport_id"], name: "index_activities_on_sport_id"
+    t.index ["workout_id"], name: "index_activities_on_workout_id"
+    t.index ["workout_type_id"], name: "index_activities_on_workout_type_id"
+  end
+
   create_table "measurements", force: :cascade do |t|
     t.float "weight"
     t.float "waist"
@@ -44,19 +61,6 @@ ActiveRecord::Schema.define(version: 2018_01_05_233726) do
     t.datetime "measured_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "races", force: :cascade do |t|
-    t.bigint "sport_id"
-    t.float "goal_time"
-    t.float "actual_time"
-    t.float "distance"
-    t.date "date"
-    t.string "name"
-    t.text "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["sport_id"], name: "index_races_on_sport_id"
   end
 
   create_table "sports", force: :cascade do |t|
@@ -72,25 +76,19 @@ ActiveRecord::Schema.define(version: 2018_01_05_233726) do
   end
 
   create_table "workouts", force: :cascade do |t|
-    t.date "planned_date"
-    t.bigint "planned_sport_id"
-    t.float "planned_km"
-    t.float "planned_minutes"
-    t.bigint "planned_workout_type_id"
+    t.date "date"
+    t.bigint "sport_id"
+    t.float "km"
+    t.float "minutes"
+    t.bigint "workout_type_id"
     t.text "description"
-    t.date "actual_date"
-    t.bigint "actual_sport_id"
-    t.float "actual_km"
-    t.float "actual_minutes"
-    t.bigint "actual_workout_type_id"
-    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["actual_sport_id"], name: "index_workouts_on_actual_sport_id"
-    t.index ["actual_workout_type_id"], name: "index_workouts_on_actual_workout_type_id"
-    t.index ["planned_sport_id"], name: "index_workouts_on_planned_sport_id"
-    t.index ["planned_workout_type_id"], name: "index_workouts_on_planned_workout_type_id"
+    t.index ["sport_id"], name: "index_workouts_on_sport_id"
+    t.index ["workout_type_id"], name: "index_workouts_on_workout_type_id"
   end
 
-  add_foreign_key "races", "sports"
+  add_foreign_key "activities", "sports"
+  add_foreign_key "activities", "workout_types"
+  add_foreign_key "activities", "workouts"
 end

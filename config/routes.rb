@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     root to: "measurements#index"
   end
 
-  resources :workouts
+  resources :workouts, only: [:show]
+  resources :activities, only: [:create, :update]
 
   root to: "dashboard#index"
 end

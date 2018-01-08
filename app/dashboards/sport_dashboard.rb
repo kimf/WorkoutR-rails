@@ -8,7 +8,6 @@ class SportDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    races: Field::HasMany,
     id: Field::Number,
     name: Field::String,
     created_at: Field::DateTime,

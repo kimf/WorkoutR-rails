@@ -9,6 +9,6 @@
 #
 
 class WorkoutType < ApplicationRecord
-  has_many :planned_workouts, class_name: 'Workout', foreign_key: 'planned_workout_type_id'
-  has_many :actual_workouts, class_name: 'Workout', foreign_key: 'actual_workout_type_id'
+  has_many :workouts
+  has_many :activities
 end

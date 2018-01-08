@@ -6,7 +6,7 @@ require 'json'
 end
 
 # WorkoutTypes
-%w(Easy LSD Interval Tempo Fartlek Test Technique Medium Hard Hills).each do |workout_type|
+%w(Easy LSD Interval Tempo Fartlek Test Technique Medium Hard Hills Race).each do |workout_type|
   WorkoutType.create(name: workout_type)
 end
 
