@@ -14,7 +14,7 @@ Rails.application.config.content_security_policy do |p|
     p.connect_src :self, :https, 'http://localhost:35729', 'ws://localhost:35729', 'http://localhost:3035', 'ws://localhost:3035'
 
   else
-    p.script_src  :self, :https
+    p.script_src :self, :https, :unsafe_inline
     p.object_src  :none
   end
 
