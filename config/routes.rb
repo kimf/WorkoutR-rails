@@ -5,12 +5,13 @@ Rails.application.routes.draw do
     resources :workouts
     resources :workout_types
     resources :activities
+    resources :strava_datas
 
     root to: "workouts#index"
   end
 
   resources :workouts, only: [:show]
-  resources :activities, only: [:create, :update]
+  # resources :activities, only: [:create, :update]
 
   root to: "dashboard#index"
 end

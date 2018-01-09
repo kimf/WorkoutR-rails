@@ -1,0 +1,29 @@
+<div class="sidebar" data-controller="sidebar" data-sidebar-toggled="false">
+  <div class="form">
+    <strong>LADDA UPP TRÄNINGSFIL</strong>
+    <hr />
+    <%= form_with model: @activity, local: true do |form| %>
+      <%= form.hidden_field :workout_id %>
+      <label>
+        Datum:
+        <%= form.text_field :date %>
+      </label>
+      <br /><br />
+      <label>
+        Sport:
+        <%= form.select(:sport_id, sports.collect {|p| [ p.name, p.id ] } ) %>
+      </label>
+      <br /><br />
+      <label>
+        <%= form.file_field :training_file %>
+      </label>
+      <br /><br />
+      <label>
+        Noteringar:
+        <%= form.text_area :description %><br><br>
+      </label>
+
+      <%= form.submit "SPARA TRÄNINGSPASS" %>
+    <% end %>
+  </div>
+</div>

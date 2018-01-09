@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_01_08_172508) do
+ActiveRecord::Schema.define(version: 2018_01_09_111454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2018_01_08_172508) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "imported_at"
     t.index ["sport_id"], name: "index_activities_on_sport_id"
     t.index ["workout_id"], name: "index_activities_on_workout_id"
   end
@@ -63,6 +64,18 @@ ActiveRecord::Schema.define(version: 2018_01_08_172508) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "strava_data", force: :cascade do |t|
+    t.bigint "activity_id"
+    t.integer "strava_id"
+    t.jsonb "data", default: {}
+    t.jsonb "laps", default: {}
+    t.jsonb "zones", default: {}
+    t.jsonb "streams", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_strava_data_on_activity_id"
   end
 
   create_table "workout_types", force: :cascade do |t|
@@ -86,4 +99,5 @@ ActiveRecord::Schema.define(version: 2018_01_08_172508) do
 
   add_foreign_key "activities", "sports"
   add_foreign_key "activities", "workouts"
+  add_foreign_key "strava_data", "activities"
 end

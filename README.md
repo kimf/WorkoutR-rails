@@ -1,22 +1,25 @@
 # TODO
 
+* Activity syncing
+
+  * If strava activity not pairable - send push with link to page to either add it as a new unplanned/extra/rescheduled workout-
+  * Create this page!
+    If rescheduled, move the planned workout and mark it as rescheduled
+
+* Each sunday, check for workouts that haven't been completed and send push with link to mark them as skipped, with a reason for why.
+
 * Kalender
   Blandning mellan Garmin/Runkeeper/Runtastic/Strava/Trainingpeaks
 
   * Göra schema via dra/släpp samt "snabbinmatning"
   * Modal som tvingar en att svara på varför man inte gjort något som skulle ha gjorts / eller ladda upp tcx fil
 
-* Få in alla planerade träningar från google sheets, med en "fråga för varje aktivitet" kanske?
-  Kan bli början på import-funktionen
-
-* Importera tcx-filer, beräkna TSS och andra roliga saker
+- Importera tcx-filer, beräkna TSS och andra roliga saker
   kolla på https://github.com/kimf/stravistix
 
-* Lopp i Sidebar, med mål och resultat. Länk till Strava?
-* Acheivements ala runkeeper, mail? Lista dom på sidan?
-* Sätta mål samt visa Fullföljda/missade mål
+- Lopp i Sidebar, med mål och resultat. Länk till Strava?
 
-* Statistik-sida
+- Statistik-sida
   Show: Last 30 days, 3 months, 6 months, year, lifetime, custom
   Automatic Compare agains same back-period (as Telia Shopper X)
   Sum by Day/Week/Month, stacked bar with different color per activity-type
@@ -27,7 +30,7 @@
   * Calories
   * Weight vs Calories burned
 
-* Aktivitets-lista med detalj-vy
+- Aktivitets-lista med detalj-vy
   * Karta - HR (med analys över tid spenderad i zoner) - Pace (analys över tid spenderad i zoner) - Elevation - Calories burned - Segments??
 
 # MIGHT DO

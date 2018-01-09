@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class WorkoutDashboard < Administrate::BaseDashboard
+class StravaDataDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,15 +8,12 @@ class WorkoutDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    sport: Field::BelongsTo.with_options(class_name: "Sport"),
-    workout_type: Field::BelongsTo.with_options(class_name: "WorkoutType"),
-    activity: Field::HasOne,
     id: Field::Number,
-    date: Field::DateTime,
-    sport_id: Field::Number,
-    km: Field::Number.with_options(decimals: 2),
-    minutes: Field::Number.with_options(decimals: 2),
-    description: Field::Text,
+    activity: Field::BelongsTo.with_options(class_name: "Activity"),
+    strava_data: Field::Number,
+    data: Field::String,
+    laps: Field::String,
+    zones: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -28,28 +25,26 @@ class WorkoutDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
-    :date,
-    :sport,
-    :workout_type,
-    :minutes,
-    :km,
-    :description,
-    :activity
+    :activity,
+    :strava_data,
+    :data,
+    :laps,
+    :zones,
+    :created_at,
+    :updated_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
-    :date,
-    :sport,
-    :workout_type,
-    :minutes,
-    :km,
-    :description,
+    :activity,
+    :strava_data,
+    :data,
+    :laps,
+    :zones,
     :created_at,
-    :updated_at,
-    :activity
+    :updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -57,19 +52,19 @@ class WorkoutDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :id,
-    :date,
-    :sport,
-    :workout_type,
-    :minutes,
-    :km,
-    :description,
-    :activity
+    :activity,
+    :strava_data,
+    :data,
+    :laps,
+    :zones,
+    :created_at,
+    :updated_at
   ].freeze
 
-  # Overwrite this method to customize how workouts are displayed
+  # Overwrite this method to customize how measurements are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(workout)
-  #   "Workout ##{workout.id}"
+  # def display_resource(measurement)
+  #   "Mätning ##{measurement.id} - #{measurement.measured_at.to_s(:day_and_month)}"
   # end
 end

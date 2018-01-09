@@ -9,8 +9,8 @@ class ActivityDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     sport: Field::BelongsTo.with_options(class_name: "Sport"),
-    workout_type: Field::BelongsTo.with_options(class_name: "WorkoutType"),
     workout: Field::BelongsTo.with_options(class_name: "Activity"),
+    strava_data: Field::HasOne,
     id: Field::Number,
     date: Field::DateTime,
     sport_id: Field::Number,
@@ -19,6 +19,7 @@ class ActivityDashboard < Administrate::BaseDashboard
     description: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    imported_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -30,11 +31,12 @@ class ActivityDashboard < Administrate::BaseDashboard
     :id,
     :date,
     :sport,
-    :workout_type,
+    :strava_data,
     :minutes,
     :km,
     :description,
-    :workout
+    :workout,
+    :imported_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -43,13 +45,14 @@ class ActivityDashboard < Administrate::BaseDashboard
     :id,
     :date,
     :sport,
-    :workout_type,
+    :strava_data,
     :minutes,
     :km,
     :description,
     :created_at,
     :updated_at,
-    :workout
+    :workout,
+    :imported_at
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -59,7 +62,7 @@ class ActivityDashboard < Administrate::BaseDashboard
     :id,
     :date,
     :sport,
-    :workout_type,
+    :strava_data,
     :minutes,
     :km,
     :description,

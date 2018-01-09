@@ -17,4 +17,34 @@ end
   WorkoutType.create(name: workout_type)
 end
 
-# WorkoutTemplate
+
+# TODO
+# Ride
+# Run
+# Swim
+# Hike
+# Walk
+# AlpineSki
+# BackcountrySki
+# Canoeing
+# Crossfit
+# EBikeRide
+# Elliptical
+# IceSkate
+# InlineSkate
+# Kayaking
+# Kitesurf
+# NordicSki
+# RockClimbing
+# RollerSki
+# Rowing
+# Snowboard
+# Snowshoe
+# StairStepper
+# StandUpPaddling
+# Surfing
+# VirtualRide
+# WeightTraining
+# Windsurf
+# Workout
+# Yoga
