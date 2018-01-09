@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_01_08_124732) do
+ActiveRecord::Schema.define(version: 2018_01_08_172508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,13 +42,11 @@ ActiveRecord::Schema.define(version: 2018_01_08_124732) do
     t.bigint "sport_id"
     t.float "km"
     t.float "minutes"
-    t.bigint "workout_type_id"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sport_id"], name: "index_activities_on_sport_id"
     t.index ["workout_id"], name: "index_activities_on_workout_id"
-    t.index ["workout_type_id"], name: "index_activities_on_workout_type_id"
   end
 
   create_table "measurements", force: :cascade do |t|
@@ -87,6 +85,5 @@ ActiveRecord::Schema.define(version: 2018_01_08_124732) do
   end
 
   add_foreign_key "activities", "sports"
-  add_foreign_key "activities", "workout_types"
   add_foreign_key "activities", "workouts"
 end

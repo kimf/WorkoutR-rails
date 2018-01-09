@@ -5,8 +5,7 @@ class WorkoutsController < ApplicationController
     @activity = @workout.activity || Activity.new(
       workout: @workout,
       date: @workout.date,
-      sport: @workout.sport,
-      workout_type: @workout.workout_type
+      sport: @workout.sport
     )
   end
 end

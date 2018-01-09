@@ -4,9 +4,22 @@ require "rexml/document"
 class GarminTcx
 
   LAP = 'TrainingCenterDatabase/Activities/Activity/Lap'
+  ACTIVITY = 'TrainingCenterDatabase/Activities/Activity'
 
   def initialize xml
     @document ||= REXML::Document.new(xml)
+  end
+
+  def sport
+    @document.elements[ACTIVITY].attributes["Sport"]
+  end
+
+  def date
+    DateTime.parse(@document.elements[ACTIVITY].get_text("Id").to_s).strftime('%F')
+  end
+
+  def notes
+    @document.elements[ACTIVITY].get_text("Notes").to_s
   end
 
   def total_time
@@ -74,6 +87,21 @@ class GarminTcx
     @document.elements.each("#{GarminTcx::LAP}/#{nodename}") {|v| ret += v.text.to_f  }
     ret
   end
+
+  # class Activity
+
+  #   def initialize activity
+  #     @activity = activity
+  #   end
+
+  #   def date
+  #     @id ||= DateTime.parse(@activity.get_text('Id').value).strftime('%s').to_f
+  #   end
+
+  #   def sport
+  #     @activity.attributes["Sport"]
+  #   end
+  # end
 
   class TrackPoint
 

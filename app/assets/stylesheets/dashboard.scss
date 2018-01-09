@@ -11,6 +11,11 @@
   border-left: 1px solid transparent;
 }
 
+.calendar {
+  height: 100%;
+  float: left;
+  width: 100%;
+}
 .calendar-wrapper {
   height: calc(100% - 40px);
   float: left;

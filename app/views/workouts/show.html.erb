@@ -35,10 +35,6 @@
     <h4>
       VERKLIGHET:
       <%= t(@activity.sport.name) %>
-      <% if @activity.workout_type %>
-        -
-        <%= t(@activity.workout_type.name) %>
-      <% end %>
       <% if @activity.minutes > 0 %>
         -
         <%= number_with_precision(
@@ -76,11 +72,6 @@
       <label>
         Sport:
         <%= form.select(:sport_id, sports.collect {|p| [ p.name, p.id ] } ) %>
-      </label>
-      <br /><br />
-      <label>
-        Pass-typ:
-        <%= form.select(:workout_type_id, workout_types.collect {|p| [ p.name, p.id ] } ) %>
       </label>
       <br /><br />
       <label>

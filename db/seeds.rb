@@ -1,7 +1,14 @@
 require 'json'
 
-# Sports
-["Running", "Swimming", "XCSkiing", "Cycling", "Strength", "Flexibility", "Roller Skiing").each do |name|
+[
+  "Running",
+  "Swimming",
+  "XCSkiing",
+  "Cycling",
+  "Strength",
+  "Flexibility",
+  "Roller Skiing"
+].each do |name|
   Sport.create(name: name)
 end
 

@@ -8,10 +8,13 @@
 html {
   box-sizing: border-box;
 }
-*,
-*:before,
-*:after {
+
+* {
   box-sizing: inherit;
+  &:before,
+  &:after {
+    box-sizing: inherit;
+  }
 }
 
 html,
@@ -33,15 +36,16 @@ body {
   -webkit-font-smoothing: antialiased;
   margin: 0;
 }
+
 a {
   border-bottom: 1px solid #29858f;
   color: #4a90e2;
   font-weight: bold;
   text-decoration: none;
-}
-a:hover {
-  opacity: 0.9;
-  border-color: #444;
+  &:hover {
+    opacity: 0.9;
+    border-color: #444;
+  }
 }
 
 p {
@@ -118,41 +122,37 @@ hr {
 .legend {
   float: right;
   margin: 0;
-}
-
-.legend li {
-  display: inline;
-  margin-right: 20px;
-  font-size: 0.7em;
-  color: #999;
+  li {
+    display: inline;
+    margin-right: 20px;
+    font-size: 0.7em;
+    color: #999;
+  }
 }
 
 .sidebar header {
   position: relative;
-}
-
-.sidebar header button {
-  position: absolute;
-  top: 25%;
-  right: 0px;
+  button {
+    position: absolute;
+    top: 25%;
+    right: 0px;
+  }
 }
 
 table {
   float: left;
   width: 100%;
   font-size: 0.8em;
-}
-
-table th {
-  background: #ececec;
-  font-weight: bold;
-  text-align: center;
-}
-
-table td {
-  text-align: center;
-  padding: 5px 0;
-  border-bottom: 1px solid #eee;
+  th {
+    background: #ececec;
+    font-weight: bold;
+    text-align: center;
+  }
+  td {
+    text-align: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+  }
 }
 
 .sidebar h4 {
@@ -173,29 +173,27 @@ div.form {
   border: 1px dashed #ccc;
   display: flex;
   flex-direction: column;
-}
-
-div.form label {
-  flex: 1;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-div.form label input,
-div.form label select,
-div.form label textarea {
-  width: 100%;
-  padding: 5px;
-  font-size: 1.2em;
-}
-
-div.form label textarea {
-  font-size: 0.9em;
-  min-height: 100px;
-}
-
-div.form button {
-  margin-top: 20px;
+  label {
+    flex: 1;
+    font-weight: bold;
+    margin-bottom: 10px;
+    input,
+    select {
+      width: 100%;
+      padding: 5px;
+      font-size: 1.2em;
+    }
+    textarea {
+      width: 100%;
+      padding: 5px;
+      font-size: 1.2em;
+      font-size: 0.9em;
+      min-height: 100px;
+    }
+  }
+  button {
+    margin-top: 20px;
+  }
 }
 
 small {
@@ -216,13 +214,17 @@ li.workoutTemplateItem {
   cursor: pointer;
 }
 
-.workout-list,
-.sidebar.toggled .stats {
+.workout-list {
   display: none;
 }
 
-.sidebar.toggled .workout-list {
-  display: block;
+.sidebar.toggled {
+  .stats {
+    display: none;
+  }
+  .workout-list {
+    display: block;
+  }
 }
 
 .muted {
@@ -238,48 +240,43 @@ li.workoutTemplateItem {
   height: 100px;
   overflow: scroll;
   direction: rtl;
-}
-
-.consistency .week {
-  direction: ltr;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-end;
-  padding: 0 1px;
-}
-
-.consistency .item {
-  flex: 1;
-  display: flex;
-  background: #87d37c;
-  height: 10px;
-  width: 100%;
-  margin-top: 2px;
-  font-size: 0.8em;
-}
-
-.consistency .item.month {
-  background: #4ecdc4;
-  color: #1e824c;
-}
-
-.consistency .item small {
-  text-align: center;
-  flex: 1;
-  margin-top: 5px;
-}
-
-.consistency .week_num {
-  flex: 1;
-  font-size: 0.6em;
-  color: #777;
-  width: 100%;
-  height: 20px;
-  display: block;
-  padding: 5px 0;
-  text-transform: uppercase;
+  .week {
+    direction: ltr;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 0 1px;
+  }
+  .item {
+    flex: 1;
+    display: flex;
+    background: #87d37c;
+    height: 10px;
+    width: 100%;
+    margin-top: 2px;
+    font-size: 0.8em;
+    &.month {
+      background: #4ecdc4;
+      color: #1e824c;
+    }
+    small {
+      text-align: center;
+      flex: 1;
+      margin-top: 5px;
+    }
+  }
+  .week_num {
+    flex: 1;
+    font-size: 0.6em;
+    color: #777;
+    width: 100%;
+    height: 20px;
+    display: block;
+    padding: 5px 0;
+    text-transform: uppercase;
+  }
 }
 
 .dropzone {
@@ -287,10 +284,9 @@ li.workoutTemplateItem {
   margin-bottom: 20px;
   background: #eee;
   border: 2px dashed #ccc;
-}
-
-.dropzone:hover {
-  background: #feb;
+  &:hover {
+    background: #feb;
+  }
 }
 
 .flash {
@@ -300,12 +296,10 @@ li.workoutTemplateItem {
   text-align: center;
   background: #000;
   color: #fff;
-}
-
-.flash.notice {
-  background: #80c159;
-}
-
-.flash.error {
-  background: #eb644a;
+  &.notice {
+    background: #80c159;
+  }
+  &.error {
+    background: #eb644a;
+  }
 }

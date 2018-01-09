@@ -35,7 +35,6 @@ class ActivitiesController < ApplicationController
       :workout_id,
       :date,
       :sport_id,
-      :workout_type_id,
       :description,
       :training_file
     )
