@@ -62,8 +62,7 @@ class WorkoutDashboard < Administrate::BaseDashboard
     :workout_type,
     :minutes,
     :km,
-    :description,
-    :activity
+    :description
   ].freeze
 
   # Overwrite this method to customize how workouts are displayed

@@ -10,7 +10,7 @@ class StravaDataDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     activity: Field::BelongsTo.with_options(class_name: "Activity"),
-    strava_data: Field::Number,
+    strava_id: Field::Number,
     data: Field::String,
     laps: Field::String,
     zones: Field::String,
@@ -26,7 +26,7 @@ class StravaDataDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :activity,
-    :strava_data,
+    :strava_id,
     :data,
     :laps,
     :zones,
@@ -39,7 +39,7 @@ class StravaDataDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :activity,
-    :strava_data,
+    :strava_id,
     :data,
     :laps,
     :zones,
@@ -53,7 +53,7 @@ class StravaDataDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :id,
     :activity,
-    :strava_data,
+    :strava_id,
     :data,
     :laps,
     :zones,
