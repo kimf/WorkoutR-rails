@@ -146,6 +146,10 @@ GEM
     execjs (2.7.0)
     ffi (1.9.18)
     formatador (0.2.5)
+    git-deploy (0.5.4)
+      net-scp
+      net-ssh
+      thor
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     groupdate (3.2.0)
@@ -217,6 +221,9 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     nenv (0.3.0)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (4.2.0)
     nio4r (2.2.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
@@ -326,6 +333,7 @@ DEPENDENCIES
   chartkick
   chromedriver-helper
   coffee-rails
+  git-deploy
   groupdate
   guard-livereload (~> 2.5)
   jbuilder (~> 2.5)

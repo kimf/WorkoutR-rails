@@ -31,4 +31,4 @@
 /public/packs
 /public/packs-test
 /node_modules
-strava_import_summaries.json
+import_result_summaries.json

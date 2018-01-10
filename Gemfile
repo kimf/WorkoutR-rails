@@ -70,7 +70,8 @@ group :development do
   gem 'active_record_doctor'
   gem 'annotate'
   gem 'guard-livereload', '~> 2.5', require: false
-  gem 'rack-livereload', group: :development
+  gem 'rack-livereload'
+  gem 'git-deploy'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

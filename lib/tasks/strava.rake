@@ -44,7 +44,7 @@ namespace :strava do
 
         if imported
           imported.update_attribute(:data, strava.to_json)
-          imported.activity.update_attributes(activity_data)
+          imported&.activity.update_attributes(activity_data)
           summaries[:updated] << { strava_id: strava["id"], activity_id: imported.activity.id }
         else
           sport = Sport.where(name: StravaData.get_sport_name(strava["type"])).first
@@ -54,8 +54,13 @@ namespace :strava do
             return
           end
 
-          date = strava["start_date_local"]
-          workout = Workout.where(sport: sport, date: date).first
+          date = Date.parse(strava["start_date_local"])
+          date_range = (date - 2.days)..(date + 2.days)
+
+          # Get the first workout in a 4 day period that has no activity, and this sport
+          workout = Workout.unscoped.includes(:activity).order(date: :asc).where(sport: sport, date: date_range, activities: {id: nil}).first
+
+          # Create this, because we want it anyways!
           strava_data = StravaData.create!(strava_id: strava["id"], data: strava.to_json)
 
           activity_data = activity_data.merge({
@@ -69,12 +74,14 @@ namespace :strava do
             summaries[:saved_only_strava_data] << { strava_id: strava["id"], strava_data_id: strava_data.id }
           else
             activity = Activity.create!(activity_data)
+            workout.update_attribute(:date, activity.date)
             summaries[:added] << { strava_id: strava["id"], activity_id: activity.id, workout_id: workout.id }
           end
         end
       end
     end
 
+    # TODO: Send this in a email instead
     File.open("import_result_summaries.json","w") do |f|
       f.write(summaries.to_json)
     end
