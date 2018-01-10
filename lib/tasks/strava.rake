@@ -23,6 +23,7 @@ namespace :strava do
       saved_only_strava_data: []
     }
 
+
     activities = @client.list_athlete_activities(after: after.to_i, per_page: 200)
     # activities = JSON.parse(File.read("lib/tasks/tmp_strava_data/activities.json"))
     # puts activities.size
@@ -40,6 +41,7 @@ namespace :strava do
           description: strava["description"]
         }
 
+
         if imported
           imported.update_attribute(:data, strava.to_json)
           imported.activity.update_attributes(activity_data)
@@ -54,7 +56,7 @@ namespace :strava do
 
           date = strava["start_date_local"]
           workout = Workout.where(sport: sport, date: date).first
-          strava_data = StravaData.create(strava_id: strava["id"], data: strava.to_json)
+          strava_data = StravaData.create!(strava_id: strava["id"], data: strava.to_json)
 
           activity_data = activity_data.merge({
             date: date,

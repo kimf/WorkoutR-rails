@@ -14,7 +14,7 @@
 #
 
 class StravaData < ApplicationRecord
-  belongs_to :activity
+  belongs_to :activity, optional: true
 
   def self.get_sport_name(strava_type)
     case strava_type
