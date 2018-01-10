@@ -32,3 +32,4 @@
 /public/packs-test
 /node_modules
 import_result_summaries.json
+.ruby-gemset
