@@ -1,18 +1,29 @@
 # TODO
 
+If another workout than planned was completed, should we add it, and somehow mark the other ones as "skipped"?
+To be able to say X amount of planned was completed, and Y extra
+Make distinction to "skipped because of other workout" and "skipped because of illnes/lazyness/sickness"
+To mark one as skipped, reason has to be given!
+
+## Notes:
+
+- 10 Jan
+  Plan = Running 60 mins Intervals + 20 min Strength
+  Actual = 45 min Skiing in Rudan with Bolle and Daniel
+
 * Activity syncing
 
-  * If strava activity not pairable - send push with link to page to either add it as a new unplanned/extra/rescheduled workout-
-  * Create this page!
+  - If strava activity not pairable - send push with link to page to either add it as a new unplanned/extra/rescheduled workout-
+  - Create this page!
     If rescheduled, move the planned workout and mark it as rescheduled
 
-* Each sunday, check for workouts that haven't been completed and send push with link to mark them as skipped, with a reason for why.
+  - Each sunday, check for workouts that haven't been completed and send push with link to mark them as skipped, with a reason for why.
 
 * Kalender
   Blandning mellan Garmin/Runkeeper/Runtastic/Strava/Trainingpeaks
 
-  * Göra schema via dra/släpp samt "snabbinmatning"
-  * Modal som tvingar en att svara på varför man inte gjort något som skulle ha gjorts / eller ladda upp tcx fil
+  - Göra schema via dra/släpp samt "snabbinmatning"
+  - Modal som tvingar en att svara på varför man inte gjort något som skulle ha gjorts / eller ladda upp tcx fil
 
 - Importera tcx-filer, beräkna TSS och andra roliga saker
   kolla på https://github.com/kimf/stravistix
@@ -25,21 +36,21 @@
   Sum by Day/Week/Month, stacked bar with different color per activity-type
   Filter on activity-type
 
-  * Distance
-  * Duration
-  * Calories
-  * Weight vs Calories burned
+  - Distance
+  - Duration
+  - Calories
+  - Weight vs Calories burned
 
 - Aktivitets-lista med detalj-vy
-  * Karta - HR (med analys över tid spenderad i zoner) - Pace (analys över tid spenderad i zoner) - Elevation - Calories burned - Segments??
+  - Karta - HR (med analys över tid spenderad i zoner) - Pace (analys över tid spenderad i zoner) - Elevation - Calories burned - Segments??
 
 # MIGHT DO
 
-* Sleep/Steps/Annan info från Health/Gyroscope/Moves?
+- Sleep/Steps/Annan info från Health/Gyroscope/Moves?
 
 # WANT TO DO, BUT PROBABLY WONT DO
 
-* App för att regga pass via apple watch/mobil med GPS+HR+Calories+Elevation m.m
+- App för att regga pass via apple watch/mobil med GPS+HR+Calories+Elevation m.m
 
 https://help.trainingpeaks.com/hc/en-us/articles/204071944
 
@@ -75,3 +86,12 @@ where:
 “IF” is Intensity Factor® (a percentage of your FTP; in other words how intense the effort was),
 “FTP” is Functional Threshold Power (your best average power for a one-hour race or test),
 and “3600” is the number of seconds in an hour.
+
+# Stuff from Trainingpeaks I like
+
+- Events and APT + Planned CTL value/graph for that event. Show all events maybe?
+- Today + Tomorrow
+- Fitness ramp rates 7 days, 28 days, 90 days, 365 days
+- Calendar with Green/Yellow/Red and summaries + TSS, as well as ATP info for that week
+- Dashboard with a lot of data and drill downs
+- ATP, all of it!

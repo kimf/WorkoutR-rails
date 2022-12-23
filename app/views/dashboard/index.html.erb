@@ -8,8 +8,10 @@
     <hr />
     <%= render 'goals' %>
     <hr />
-    <%= render 'measurements', measurements: @measurements %>
-    <hr />
+    <% if @measurements.size > 0 %>
+      <%= render 'measurements', measurements: @measurements %>
+      <hr />
+    <% end %>
     <button data-action="sidebar#toggleForm">
       SCHEMALÄGG
     </button>

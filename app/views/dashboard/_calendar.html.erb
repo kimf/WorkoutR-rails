@@ -2,46 +2,45 @@
   <%= render 'calendar_header' %>
   <div class="calendar-wrapper">
     <%= week_calendar number_of_weeks: @num_weeks, start_date: @start, attribute: :date, events: @events do |date, workouts| %>
-      <small><%= date.strftime('%d %b') %></small>
-      <button class="add">+</button>
+      <small><%= date.strftime('%a') %></small>
+      <div class="workouts">
+        <% workouts.each do |workout| %>
+          <a
+            href="/workouts/<%= workout.id %>"
+            draggable="true"
+            class="workout <%= workout.is_race? ? 'race' : '' %> <%=workout.sport.name%> <%= workout.activity.nil? ? '' : 'done' %>"
+          >
+            <span class="info">
+              <%= workout.sport.name %>
+              <% if workout.workout_type %>
+                <%= t(workout.workout_type.name) %>
+              <% end %>
 
-      <% workouts.each do |workout| %>
-        <a
-          href="/workouts/<%= workout.id %>"
-          draggable="true"
-          class="workout <%= workout.is_race? ? 'race' : '' %> <%=workout.sport.name%> <%= workout.activity.nil? ? '' : 'done' %>"
-        >
-          <header>
-            <div class="sport-icon" style="background: <%= SPORT_COLORS[workout.sport.name]%>">
-              <%= SPORT_ICONS[workout.sport.name] %>
-            </div>
-            <% if workout.workout_type %>
-              <%= t(workout.workout_type.name) %>
-            <% end %>
+              <% if workout.minutes %>
+                <%= number_with_precision(
+                  workout.minutes,
+                  precision: 1,
+                  strip_insignificant_zeros: true
+                ) %> min
+              <% end %>
+            </span>
 
-            <% if workout.minutes %>
-              <%= number_with_precision(
-                workout.minutes,
-                precision: 1,
-                strip_insignificant_zeros: true
-              ) %> min
-            <% end %>
-          </header>
-          <small class="meta">
-            <% if workout.km %>
-              <%= number_with_precision(
-                workout.km,
-                precision: 1,
-                strip_insignificant_zeros: true
-              ) %> km
-            <% end %>
+            <span class="meta">
+              <% if workout.km %>
+                <%= number_with_precision(
+                  workout.km,
+                  precision: 1,
+                  strip_insignificant_zeros: true
+                ) %> km
+              <% end %>
 
-            <% if workout.description %>
-              <%= workout.description %>
-            <% end %>
-          </small>
-        </a>
-      <% end %>
+              <% if workout.description %>
+                <%= workout.description %>
+              <% end %>
+            </span>
+          </a>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

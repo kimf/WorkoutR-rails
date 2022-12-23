@@ -1,144 +1,99 @@
-.calender-header-week {
-  display: flex;
-}
-
-.calendar-header-day {
-  flex: 1;
-  text-align: left;
-  font-size: 0.8em;
-  padding: 0 0 10px 10px;
-  border-right: 1px solid #eee;
-  border-left: 1px solid transparent;
-}
-
 .calendar {
-  height: 100%;
   float: left;
   width: 100%;
 }
 .calendar-wrapper {
-  height: calc(100% - 40px);
   float: left;
   width: 100%;
   overflow: scroll;
-  padding-top: 20px;
-}
-
-.calendar-header {
-  border-bottom: 2px dashed #eee;
-  z-index: 1000;
-  position: relative;
-}
-.week span {
-  margin: 0 5px;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
 }
 
 .week-row {
+  height: 100%;
+  min-width: 400px;
   display: flex;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.week-row li.day {
-  border-top: 1px solid #ccc;
+  flex: 1;
+  flex-direction: column;
   border-left: 1px solid #ccc;
-  padding: 5px;
-  position: relative;
+  padding: 10px 20px;
 }
 
-.week-row li.day:last-child {
-  border-right: 1px solid #ccc;
+.week-row .day {
+  display: flex;
+  height: 80px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
 }
 
-.week-row li.day.past {
+.week-row .day:last-child {
+  border-bottom: none;
+}
+
+.week-row .day.past {
   opacity: 0.65;
 }
 
-.week-row li.day.today {
+.week-row .day.today {
   background: #feb;
 }
 
-.week-row li.day .workout {
+.week-row .day .workout {
   float: left;
   width: 100%;
-  min-height: 60px;
-  margin-bottom: 8px;
-  padding: 6px;
-  font-size: 11px;
-  font-family: "Arial Narrow", Arial, sans-serif;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  background: #ccc;
+  margin-bottom: 4px;
+  font-size: 0.8em;
+  font-weight: normal;
   color: #444;
+  border-bottom: 1px solid #eee;
+  padding: 0 4px 4px 4px;
 }
 
-.workout .meta {
-  font-size: 11px;
-  font-weight: 100;
-}
-
-.week-row li.day .workout.race {
+.week-row .day .workout.race {
   background: #4ecdc4;
   font-weight: bold;
 }
 
-.week-row li.day .workout.done:not(.race) {
+.week-row .day .workout.done:not(.race) {
   background: #80c159;
 }
 
-.week-row li.day.past .workout:not(.done):not(.race) {
+.week-row .day.past .workout:not(.done):not(.race) {
   background: #eb644a;
 }
 
 .current-week {
-  box-shadow: inset 7px 0 4px -7px red;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 5px #ccc;
 }
 
 .month-name {
   margin-bottom: 20px;
 }
 
-.week-row-day {
-  flex: 1;
-  min-height: 200px;
-  overflow: hidden;
-}
-
-.week-row-day.summaries,
-.calendar-header-day.summaries {
-  background: #eee;
-  flex: 1.75;
-}
-
-.sport-icon {
-  font-size: 10px;
-  padding: 0 4px;
-  float: left;
-  margin: 0 4px 0 0;
-}
-
-.workoutTemplateItem:hover,
 .workout:hover {
-  border: 1px solid #000 !important;
-  cursor: pointer;
+  background: #eee;
+  border-color: #ccc;
+  cursor: move;
 }
 
-.week-row li.day .add {
-  display: none;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  opacity: 0.5;
-  cursor: pointer;
+.day-name {
+  float: left;
+  width: 40px;
 }
 
-.week-row li.day:hover .add {
-  display: block;
+.workouts {
+  padding-left: 20px;
+  float: left;
+  width: 100%;
 }
 
-.week-row li.day .add:hover {
-  opacity: 1;
+.workout .meta {
+  float: right;
+  font-size: 0.9em;
+}
+
+.workout .info {
+  float: left;
 }

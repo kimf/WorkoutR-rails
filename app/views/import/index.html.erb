@@ -1,0 +1,18 @@
+<% @unmatched.each do |sd| %>
+  <div style="margin: 20px; padding: 20px; border-bottom: 2px solid #ccc">
+    <%- data = JSON.parse(sd.data) %>
+    Datum: <%= Date.parse(data["start_date"]).strftime('%e %B %Y') %>
+    <%= data["name"] %>
+    <%= data["type"] %>
+    <%= (data["distance"].to_f / 1000).round %> km
+    <%= (data["moving_time"] / 60).round %> min
+    Suffer: <%= data["suffer_score"] %>
+    <%= link_to "##{sd.strava_id}", "https://www.strava.com/activities/#{sd.strava_id}" %>
+
+    <% @wotypes.each do |wot| %>
+      <%= button_to [:import], params: {wo_type_id: wot.id, id: sd.id} do %>
+        <%= wot.name %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

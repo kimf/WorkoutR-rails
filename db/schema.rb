@@ -45,7 +45,9 @@ ActiveRecord::Schema.define(version: 2018_01_09_111454) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "race_id"
     t.datetime "imported_at"
+    t.index ["race_id"], name: "index_activities_on_race_id"
     t.index ["sport_id"], name: "index_activities_on_sport_id"
     t.index ["workout_id"], name: "index_activities_on_workout_id"
   end
@@ -58,6 +60,19 @@ ActiveRecord::Schema.define(version: 2018_01_09_111454) do
     t.datetime "measured_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "races", force: :cascade do |t|
+    t.bigint "sport_id"
+    t.float "goal_time"
+    t.float "actual_time"
+    t.float "distance"
+    t.date "date"
+    t.string "name"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sport_id"], name: "index_races_on_sport_id"
   end
 
   create_table "sports", force: :cascade do |t|
@@ -99,5 +114,6 @@ ActiveRecord::Schema.define(version: 2018_01_09_111454) do
 
   add_foreign_key "activities", "sports"
   add_foreign_key "activities", "workouts"
+  add_foreign_key "races", "sports"
   add_foreign_key "strava_data", "activities"
 end

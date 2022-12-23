@@ -1,12 +1,12 @@
 <% date_range.each_slice(7) do |week| %>
-  <ul class="week-row <%= calendar.tr_classes_for(week).join(' ') %>">
+  <div class="week-row <%= calendar.tr_classes_for(week).join(' ') %>">
+    <strong class="muted">
+       <%= week.first.strftime('%d') %> - <%= week.last.strftime('%d %b') %>
+    </strong>
     <% week.each do |day| %>
-      <li class="week-row-day day <%= calendar.td_classes_for(day).join(' ') %>">
+      <div class="week-row-day day <%= calendar.td_classes_for(day).join(' ') %>">
         <% block.call day, sorted_events.fetch(day, []) %>
-      </li>
+      </div>
     <% end %>
-    <li class="week-row-day day summaries <%= calendar.td_classes_for(week[week.size - 1]).join(' ').gsub('today', '') %>">
-      <small class="muted">Summeringar</small>
-    </li>
-  </ul>
+  </div>
 <% end %>

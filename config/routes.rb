@@ -13,5 +13,8 @@ Rails.application.routes.draw do
   resources :workouts, only: [:show]
   # resources :activities, only: [:create, :update]
 
+  get '/import', to: "import#index"
+  post '/import', to: "import#transform"
+
   root to: "dashboard#index"
 end
